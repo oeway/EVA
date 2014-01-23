@@ -9,6 +9,7 @@ set _INPUTDIR=%_BASEDIR%\content
 set _OUTPUTDIR=%_BASEDIR%\output
 set _CONFFILE=%_BASEDIR%\pelicanconf.py
 set _PUBLISHCONF=%_BASEDIR%\publishconf.py
+set _GITHUB_WEBSITE_DIR= ..\..\evaimg.github.com
  
 set _FTP_HOST=$ftp_host
 set _FTP_USER=$ftp_user
@@ -105,6 +106,7 @@ GOTO :end
 :publish
 echo Generating production ready HTML
 %_PELICAN% %_INPUTDIR% -o %_OUTPUTDIR% -s %_PUBLISHCONF% %_PELICANOPTS%
+xcopy %_OUTPUTDIR%\* %_GITHUB_WEBSITE_DIR% /s /e /h /c /y
 GOTO:EOF
  
 :upload
@@ -160,8 +162,8 @@ GOTO :end
 :github
 echo Running Pelican and publishing output to Github
 call :publish
-ghp-import %_OUTPUTDIR%
-git push origin gh-pages
+rem ghp-import %_OUTPUTDIR%
+cd %_GITHUB_WEBSITE_DIR% && git status && git add * && git commit --allow-empty-message -m '' && git push origin master
  
 :end
 ENDLOCAL

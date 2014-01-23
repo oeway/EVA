@@ -82,9 +82,9 @@ ftp_upload: publish
 
 s3_upload: publish
 	s3cmd sync $(OUTPUTDIR)/ s3://$(S3_BUCKET) --acl-public --delete-removed
-check: clean publish
+check: publish
 	cd $(GITHUB_WEBSITE_DIR) && git status
-github: clean publish
+github: publish
 	#ghp-import $(OUTPUTDIR)
 	#git push origin gh-pages
 	#git rm $(git ls-files --deleted)

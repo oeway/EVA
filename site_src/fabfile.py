@@ -36,9 +36,10 @@ def preview():
     local('pelican -s publishconf.py')
 
 def github():
-    if os.path.isdir(DEPLOY_PATH):
-        local('ghp-import {deploy_path}'.format(**env))
-        local('git push origin gh-pages')
+    #if os.path.isdir(DEPLOY_PATH):
+    #    local('ghp-import {deploy_path}'.format(**env))
+    #    local('git push origin gh-pages')
+    print('WARNING:To be supported!')
 
 @hosts(production)
 def publish():

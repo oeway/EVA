@@ -8,6 +8,13 @@ SITEURL = ''
 
 TIMEZONE = 'Asia/Shanghai'
 
+LOCALE = ('usa',  # On Windows
+    'en_US'     # On Unix/Linux
+)
+DATE_FORMATS = {
+    'en': '%a %d %B %Y',
+}
+DEFAULT_DATE = (2013, 6, 27, 10, 1, 1)
 DEFAULT_LANG = u'en'
 
 # Feed generation is usually not desired when developing
@@ -35,7 +42,7 @@ NDE_CATEGORIES = (
             )
 MENUITEMS =(('Home',''),
             ('Blog','blog.html'),
-            ('Wiki','https://github.com/oeway/EVA/wiki'),
+            ('Wiki','http://wiki.evaimg.org'),
             #('Categories_dropdown', NDE_CATEGORIES ),
             ('Downloads','pages/downloads.html'),
             ('About','pages/about.html'),
@@ -52,9 +59,10 @@ CAROUSELITEMS = (
             
 )
 # static paths will be copied without parsing their contents
-FILE_TO_COPY = [
+STATIC_PATHS = [
                 'extra/robots.txt',
-                'CNAME'
+                'CNAME',
+                'images'
                 ]
 EXTRA_PATH_METADATA = {
     'extra/robots.txt': {'path': 'robots.txt'},
@@ -85,4 +93,6 @@ DEFAULT_PAGINATION = 10
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
 
+# code blocks with line numbers
+PYGMENTS_RST_OPTIONS = {'linenos': 'table'}
 
